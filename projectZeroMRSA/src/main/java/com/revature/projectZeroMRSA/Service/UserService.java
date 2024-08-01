@@ -18,26 +18,13 @@ public class UserService {
         this.userRepository=userRepository;
     }
 
-    /*
+
     public Users login(String username, String password) throws AuthenticationException {
         Optional<Users> user=userRepository.findByUsernameAndPassword(username, password);
         if(user.isPresent()){
             return user.get();
         }
         return null;
-    }*/
-    public Users saveAccount(Users users) {
-        List<Users> users = userRepository.findAll();
-        Users logAccount = null;
-
-        /*for(Users us : users){
-            if(us.getUser_name().equals(us.getUser_name()) && us.getUser_password().equals(users.getUser_password())){
-                logAccount = us;
-            }
-        }
-        return logAccount;
-        /*
-         */
     }
 
 

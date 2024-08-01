@@ -3,40 +3,45 @@ import com.revature.projectZeroMRSA.Model.Users;
 import com.revature.projectZeroMRSA.Service.UserService;
 import com.revature.projectZeroMRSA.Repository.UserRepository;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.security.sasl.AuthenticationException;
 
 @RestController
 public class UserController {
-    UserService userService;
+    private UserService userService;
 
+    @Autowired
     public UserController(UserService userService){
         this.userService=userService;
     }
 
-    @PostMapping("/login")
+    /*@PostMapping("/login")
     public @ResponseBody ResponseEntity<Users> loginAccount(@RequestBody Users users){
         Users login = userService.saveAccount(users);
         if(login != null){
             return ResponseEntity.status(200).body(login);
         }
         return ResponseEntity.status(401).body(null);
-    /*
+    */
+
+    @GetMapping("hello")
+    public ResponseEntity<String> hello() throws Exception{
+        return ResponseEntity.status(200).body("hello");
+    }
+
     @PostMapping("login")
-    public ResponseEntity<Users> userLogin(@RequestBody Users users) throws AuthenticationException {
-        Users user= userService.login(user.getUsername(), user.getPassword());
+    public ResponseEntity<Users> userLogin(@RequestBody Users users) throws javax.naming.AuthenticationException {
+        Users user= userService.login(users.getUser_name(), users.getUser_password());
         if(user!=null){
             return ResponseEntity.status(200).body(user);
         }else{
             return ResponseEntity.status(401).body(null);
         }
     }
-    */
+
 
 
 }
