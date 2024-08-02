@@ -9,14 +9,13 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 
 @SpringBootApplication
-//@EntityScan("com.revature.models")
-//@EnableJpaRepositories("com.revature.repositories")
+@EntityScan("com.revature.models")
+@EnableJpaRepositories("com.revature.repositories")
 public class ProjectZeroMrsaApplication{
 
-	//This is just for testing remove this
-	@GetMapping("/hello")
-	public String hello(@RequestParam(value = "name", defaultValue = "World") String name) {
-		return String.format("Hello %s!", name);
+	@GetMapping("/")
+	public String index() {
+		return "Greetings from Spring Boot!";
 	}
 
 	public static void main(String[] args){
