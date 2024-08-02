@@ -27,10 +27,6 @@ public class UserController {
         return ResponseEntity.status(401).body(null);
     */
 
-    @GetMapping("hello")
-    public ResponseEntity<String> hello() throws Exception{
-        return ResponseEntity.status(200).body("hello");
-    }
 
     @PostMapping("login")
     public ResponseEntity<Users> userLogin(@RequestBody Users users) throws javax.naming.AuthenticationException {
