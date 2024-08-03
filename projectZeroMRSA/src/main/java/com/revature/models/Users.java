@@ -1,4 +1,4 @@
-package com.revature.projectZeroMRSA.Model;
+package com.revature.Model;
 
 import jakarta.persistence.*;
 import lombok.*;
