@@ -1,4 +1,4 @@
-package com.revature.Model;
+package com.revature.models;
 
 import jakarta.persistence.*;
 import lombok.*;
@@ -13,9 +13,9 @@ public class Users {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
     @Column
-    private String user_name;
+    private String userName;
     @Column
-    private String user_password;
+    private String userPassword;
 
     public long getId() {
         return id;
@@ -25,20 +25,20 @@ public class Users {
         this.id = id;
     }
 
-    public String getUser_name() {
-        return user_name;
+    public String getUserName() {
+        return userName;
     }
 
-    public void setUser_name(String user_name) {
-        this.user_name = user_name;
+    public void setUserName(String userName) {
+        this.userName = userName;
     }
 
     public String getUser_password() {
-        return user_password;
+        return userPassword;
     }
 
-    public void setUser_password(String user_password) {
-        this.user_password = user_password;
+    public void setUserPassword(String userPassword) {
+        this.userPassword = userPassword;
     }
 
     //todo connect to games table

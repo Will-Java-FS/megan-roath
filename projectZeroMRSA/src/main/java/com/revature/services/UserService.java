@@ -1,16 +1,22 @@
-package com.revature.Service;
-import com.revature.Repository.UserRepository;
+package com.revature.services;
+import com.revature.models.Users;
+import com.revature.repositories.UserRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 public class UserService {
-
+    @Autowired
     UserRepository userRepository;
 
 
     public UserService(UserRepository userRepository){
         this.userRepository=userRepository;
     }
+
+
 
 
 

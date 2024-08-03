@@ -1,4 +1,4 @@
-package com.revature.Controller;
+package com.revature.controllers;
 
 public class GamesController {
 }

@@ -1,4 +1,4 @@
-package com.revature.Service;
+package com.revature.services;
 
 public class GamesService {
 }

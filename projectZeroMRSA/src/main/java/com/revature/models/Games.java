@@ -1,4 +1,4 @@
-package com.revature.Model;
+package com.revature.models;
 
 public class Games {
 }
