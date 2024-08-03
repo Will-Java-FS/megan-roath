@@ -16,7 +16,9 @@ public class UserService {
         this.userRepository=userRepository;
     }
 
-
+    public List<Users> getAllUsers() throws Exception{
+        return userRepository.findAll();
+    }
 
 
 
