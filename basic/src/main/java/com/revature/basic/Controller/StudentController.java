@@ -40,4 +40,29 @@ public class StudentController {
         return "Successfully submitted";
 
     }
+
+    //Send a json object {
+    //    "email": "admin@mail.com",
+    //    "major": "ADMIN",
+    //    "age": 100,
+    //    "password": "adminPass"
+    //}
+    @PostMapping("jsonsubmit")
+    public @ResponseBody String update(@RequestBody Student student){
+        studentList.add(student);
+        return "Successfully submitted";
+    }
+
+
+    /*@PutMapping("update")
+    public @ResponseBody String update(@RequestBody Student updatedStudent){
+        if(studentList.removeIf(student -> student.getEmail().equals(updatedStudent.getEmail()))) {
+            studentList.add(updatedStudent);
+            return "Successfully updated";
+        }
+        return "Email was not registered, check email and try again. Or register new student.";
+    }
+    */
+
+
 }
