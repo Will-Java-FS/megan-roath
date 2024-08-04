@@ -26,7 +26,9 @@ public class theController {
     public String sayYo(){
         return "Yo!";
     }
-
+    //@RequestParam extracts values from the query string.
+    //Use: Using RequestParam all the data provided by the user on the registration
+    // page and bind it to the request parameter.
     //@RequestParam annotation can be used to assign variables to query parameters in Http Requests
     //http://localhost:8080/name?firstname=John&lastname=doe
     @GetMapping("/name")
@@ -70,5 +72,9 @@ public class theController {
     public String getErrorMessage1(Exception ex) {
         return "Exception";
     }
+
+    //@PathVariable extracts values from the URI path.
+
+
 
 }
