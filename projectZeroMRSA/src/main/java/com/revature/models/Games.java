@@ -16,10 +16,8 @@ public class Games {
     private Integer gameId;
     @Column(name="gamename")
     private String gameName;
-    /*
-    @Column
-    private
-     */
+    @Column(name="owner")
+    private String owner;
 
     @Autowired
     public Games(){ }
@@ -33,6 +31,13 @@ public class Games {
     public Games(Integer gameId, String gameName){
         this.gameId = gameId;
         this.gameName = gameName;
+    }
+
+    @Autowired
+    public Games(Integer gameId, String gameName, String owner){
+        this.gameId = gameId;
+        this.gameName = gameName;
+        this.owner = owner;
     }
 
     public Integer getGameId() {
