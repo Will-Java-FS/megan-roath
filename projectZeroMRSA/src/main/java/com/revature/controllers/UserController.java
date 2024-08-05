@@ -28,7 +28,7 @@ public class UserController {
     public String index() {
         return "Welcome to our app :)";
     }
-
+    //http://localhost:8080/userlist
     @GetMapping("/userlist")
     public ResponseEntity<List<Users>> getMessages() throws Exception {
         try {
@@ -45,7 +45,7 @@ public class UserController {
     To register an account I am thinking a json object would be more secure
     so it doesn't send the data in the query.
     use @RequesetBody passed in a a param to the function
-    for postman testing.
+    http://localhost:8080/register
         {   "id" : 0,
             "name": "newuser",
             "password": "securepwd"
@@ -71,6 +71,7 @@ public class UserController {
     }
     /*
     for postman testing, if a user is logged in the json should return the updated json with id
+    http://localhost:8080/login
     {
         "id": 0,
             "name": "sarah",
