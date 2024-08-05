@@ -55,19 +55,28 @@ public class UserController {
     //@JsonProperty(value = "id")
     @PostMapping("register")
     public ResponseEntity<Users> registerNewUser(@RequestBody Users users) throws Exception {
-        //Optional<Users> checkIfUserNameExists = userService.checkIfUserNameExists(users.getName());
-        return ResponseEntity.status(200).body(users);
+        Optional<Users> checkIfUserNameExists = userService.checkIfUserNameExists(users.getName());
+        //return ResponseEntity.status(200).body(users);
 
-        //if(checkIfUserNameExists.isPresent()){ //username already exists
-        //    return ResponseEntity.status(409).body(null);
-        //    }
-        //if(users.passwordLength()>=4) {
-        //    Users newuser = userService.addNewUser(users);
-        //    return ResponseEntity.status(200).body(newuser);
-        //}
-        //return ResponseEntity.status(400).body(null);
+        if(checkIfUserNameExists.isPresent()){ //username already exists
+            return ResponseEntity.status(409).body(null);
+            }
+        if(users.passwordLength()>=4) {
+            userService.persistUsers(users);
+            return ResponseEntity.status(200).body(null);
+            //return ResponseEntity.status(200).body(null); //testing only
+        }
+        return ResponseEntity.status(400).body(null);
 
     }
+    /*
+    for postman testing, if a user is logged in the json should return the updated json with id
+    {
+        "id": 0,
+            "name": "sarah",
+            "password": "pwd"
+    }
+    */
 
     @PostMapping("login")
     public ResponseEntity<Users> userLogin(@RequestBody Users users) throws AuthenticationException {

@@ -1,5 +1,6 @@
 package com.revature.models;
 
+import com.fasterxml.jackson.databind.annotation.JsonAppend;
 import jakarta.persistence.*;
 import lombok.*;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,31 +9,42 @@ import org.springframework.beans.factory.annotation.Autowired;
 //@Data
 @Table(name="users")
 //@AllArgsConstructor
-@NoArgsConstructor
+//@NoArgsConstructor
 public class Users {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name="id")
-    private Long id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name="userid")
+    private Integer userid;
     @Column(name="name")
     private String name;
     @Column(name="password")
     private String password;
 
     @Autowired
-    Users(long id, String name, String password){
-        this.id=id;
+    Users(){
+
+    }
+
+    @Autowired
+    Users(String name, String password){
+        this.name=name;
+        this.password=password;
+    }
+
+    @Autowired
+    Users(Integer id, String name, String password){
+        this.userid=id;
         this.name=name;
         this.password=password;
     }
 
     public long getId() {
-        return id;
+        return this.userid;
     }
 
-    public void setId(long id) {
-        this.id = id;
+    public void setId(Integer id) {
+        this.userid = id;
     }
 
     public String getName() {
