@@ -9,6 +9,7 @@ import java.util.List;
 @Service
 public class GamesService {
 
+    @Autowired
     private GamesRepository gamesRepository;
 
     @Autowired

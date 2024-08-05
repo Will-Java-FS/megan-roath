@@ -12,9 +12,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 public class Games {
 
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name="gameId")
+    @Column(name="gameid")
     private Integer gameId;
-    @Column(name="gameName")
+    @Column(name="gamename")
     private String gameName;
     /*
     @Column
