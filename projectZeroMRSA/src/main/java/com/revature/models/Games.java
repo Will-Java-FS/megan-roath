@@ -55,4 +55,12 @@ public class Games {
     public void setGameName(String gameName) {
         this.gameName = gameName;
     }
+
+    public String getOwner() {
+        return owner;
+    }
+
+    public void setOwner(String owner) {
+        this.owner = owner;
+    }
 }
