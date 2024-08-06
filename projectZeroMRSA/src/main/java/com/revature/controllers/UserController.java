@@ -88,5 +88,57 @@ public class UserController {
             return ResponseEntity.status(401).body(null);
         }
     }
+    //http://localhost:8080/user?name=sarah
+    @GetMapping(value = "user",params={"name"})
+    public ResponseEntity<Users> getUserByName(@RequestParam("name") String name){
+        Users user= userService.getUserByName(name);
+        if(user!=null){
+            return ResponseEntity.status(200).body(user);
+        }else{
+            return ResponseEntity.status(401).body(null);
+        }
+    }
+
+    //http://localhost:8080/userid/1
+    @GetMapping("/userid/{id}") //this needs to be the same name as passsed in
+    public ResponseEntity<Users> getUser(@PathVariable Long id) {
+        Users user= userService.getUserById(id);
+        if(user!=null){
+            return ResponseEntity.status(200).body(user);
+        }else{
+            return ResponseEntity.status(401).body(null);
+        }
+    }
+
+
+    //@PutMapping("/gamesowned")
+    //    public ResponseEntity<Users> addNewGame(@RequestBody Users users) throws Exception {
+    //    Users user = userService.getUserById(users.getId());
+
+        //return ResponseEntity.status(200).body(users);
+
+        //if(checkIfUserNameExists.isPresent()){ //username already exists
+        //return ResponseEntity.status(409).body(null);
+        //}
+
+     //   return ResponseEntity.status(400).body(null);
+    //}
+    //public ResponseEntity<List> getGamesByUserId(@PathVariable Long id) {
+    //    List<String> user= userService.getGamesByUserId(id).getUsergameslist();
+    //    if(user!=null){
+    //        return ResponseEntity.status(200).body(user);
+    //    }else{
+    //        return ResponseEntity.status(401).body(null);
+    //    }
+    //}
+
+    /*
+    To add games to user by changing json object
+
+     */
+    //@PutMapping("addgame")
+
+
+
 
 }

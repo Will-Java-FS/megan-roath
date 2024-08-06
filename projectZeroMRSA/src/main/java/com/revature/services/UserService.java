@@ -23,13 +23,14 @@ public class UserService {
         this.userRepository.save(users);
     }
 
+
     public List<Users> getAllUsers() throws Exception{
         return userRepository.findAll();
     }
 
     public Optional<Users> checkIfUserNameExists(String name) throws Exception {
-        Optional<Users> optionalAccount=userRepository.findUsersByName(name);
-        return optionalAccount;
+        Optional<Users> optionalUsers=userRepository.findUsersByName(name);
+        return optionalUsers;
     }
 
 
@@ -40,6 +41,31 @@ public class UserService {
         }
         return null;
     }
+
+    public Users getUserByName(String name){
+        Optional<Users> user=userRepository.findUsersByName(name);
+        if(user.isPresent()){
+            return user.get();
+        }
+        return null;
+    }
+
+    public Users getUserById(Long userid){
+        Optional<Users> user=userRepository.findUsersById(userid);
+        if(user.isPresent()){
+            return user.get();
+        }
+        return null;
+    }
+
+    public Users getGamesByUserId(Long userid){
+        Optional<Users> user=userRepository.findGamesById(userid);
+        if(user.isPresent()){
+            return user.get();
+        }
+        return null;
+    }
+
 
 
 }
