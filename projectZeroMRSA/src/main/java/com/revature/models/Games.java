@@ -3,10 +3,12 @@ package com.revature.models;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
+import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 
 @Entity
+@Data
 @Table(name="games")
 //@AllArgsConstructor
 //@NoArgsConstructor
@@ -67,7 +69,6 @@ public class Games {
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JsonBackReference
-    @JoinColumn(name = "gid")
+    @JoinColumn(name = "gid", referencedColumnName = "userid")
     private Users users;
-
 }

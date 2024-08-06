@@ -8,7 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import java.util.List;
 
 @Entity
-//@Data
+@Data
 @Table(name="users")
 //@AllArgsConstructor
 //@NoArgsConstructor
@@ -72,12 +72,9 @@ public class Users {
         return this.password.length();
     }
 
-
-
-
     //todo connect to games table
-    @OneToMany(fetch = FetchType.EAGER)
-    @JoinColumn(name = "gid")
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "users")
+    //@JoinColumn(name = "gid")
     @JsonManagedReference
     private List<Games> games;
 }
