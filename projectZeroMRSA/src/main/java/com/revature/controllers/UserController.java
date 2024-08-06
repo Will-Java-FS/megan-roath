@@ -110,6 +110,28 @@ public class UserController {
         }
     }
 
+
+    //@PutMapping("/gamesowned")
+    //    public ResponseEntity<Users> addNewGame(@RequestBody Users users) throws Exception {
+    //    Users user = userService.getUserById(users.getId());
+
+        //return ResponseEntity.status(200).body(users);
+
+        //if(checkIfUserNameExists.isPresent()){ //username already exists
+        //return ResponseEntity.status(409).body(null);
+        //}
+
+     //   return ResponseEntity.status(400).body(null);
+    //}
+    //public ResponseEntity<List> getGamesByUserId(@PathVariable Long id) {
+    //    List<String> user= userService.getGamesByUserId(id).getUsergameslist();
+    //    if(user!=null){
+    //        return ResponseEntity.status(200).body(user);
+    //    }else{
+    //        return ResponseEntity.status(401).body(null);
+    //    }
+    //}
+
     /*
     To add games to user by changing json object
 

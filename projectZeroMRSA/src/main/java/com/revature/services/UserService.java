@@ -23,6 +23,7 @@ public class UserService {
         this.userRepository.save(users);
     }
 
+
     public List<Users> getAllUsers() throws Exception{
         return userRepository.findAll();
     }
@@ -56,5 +57,15 @@ public class UserService {
         }
         return null;
     }
+
+    public Users getGamesByUserId(Long userid){
+        Optional<Users> user=userRepository.findGamesById(userid);
+        if(user.isPresent()){
+            return user.get();
+        }
+        return null;
+    }
+
+
 
 }

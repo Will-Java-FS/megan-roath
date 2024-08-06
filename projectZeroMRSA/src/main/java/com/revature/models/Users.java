@@ -22,6 +22,9 @@ public class Users {
     private String name;
     @Column(name="password")
     private String password;
+    //@Setter
+    //@Getter
+    //private List<String> usergameslist;
 
     @Autowired
     Users(){
@@ -68,6 +71,9 @@ public class Users {
     public int passwordLength(){
         return this.password.length();
     }
+
+
+
 
     //todo connect to games table
     @OneToMany(fetch = FetchType.EAGER)
