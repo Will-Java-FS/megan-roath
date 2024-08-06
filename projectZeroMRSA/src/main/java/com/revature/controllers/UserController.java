@@ -88,5 +88,35 @@ public class UserController {
             return ResponseEntity.status(401).body(null);
         }
     }
+    //http://localhost:8080/user?name=sarah
+    @GetMapping(value = "user",params={"name"})
+    public ResponseEntity<Users> getUserByName(@RequestParam("name") String name){
+        Users user= userService.getUserByName(name);
+        if(user!=null){
+            return ResponseEntity.status(200).body(user);
+        }else{
+            return ResponseEntity.status(401).body(null);
+        }
+    }
+
+    //http://localhost:8080/userid/1
+    @GetMapping("/userid/{id}") //this needs to be the same name as passsed in
+    public ResponseEntity<Users> getUser(@PathVariable Long id) {
+        Users user= userService.getUserById(id);
+        if(user!=null){
+            return ResponseEntity.status(200).body(user);
+        }else{
+            return ResponseEntity.status(401).body(null);
+        }
+    }
+
+    /*
+    To add games to user by changing json object
+
+     */
+    //@PutMapping("addgame")
+
+
+
 
 }
