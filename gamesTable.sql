@@ -4,7 +4,8 @@ DROP TABLE if exists games;
 CREATE TABLE if not exists games(
 	gameid serial primary key,
 	gamename varchar(50) unique not null,
-	owner varchar(50) not null
+	owner varchar(50) not null,
+	gid int references users(userid) on delete cascade
 );
 
 INSERT INTO games VALUES

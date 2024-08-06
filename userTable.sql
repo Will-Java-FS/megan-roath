@@ -2,9 +2,9 @@ SET search_path TO public;
 DROP TABLE if exists users;
 
 CREATE TABLE if not exists users(
-	userId serial primary key,
-	name varchar(255) unique not null,
-	password varchar(255) not null
+	userid serial primary key,
+	name varchar(50) unique not null,
+	password varchar(50) not null
 );
 
 INSERT INTO users VALUES
