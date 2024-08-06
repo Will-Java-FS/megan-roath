@@ -1,9 +1,11 @@
 package com.revature.models;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.fasterxml.jackson.databind.annotation.JsonAppend;
 import jakarta.persistence.*;
 import lombok.*;
 import org.springframework.beans.factory.annotation.Autowired;
+import java.util.List;
 
 @Entity
 //@Data
@@ -68,5 +70,8 @@ public class Users {
     }
 
     //todo connect to games table
-
+    @OneToMany(fetch = FetchType.EAGER)
+    @JoinColumn(name = "gid")
+    @JsonManagedReference
+    private List<Games> games;
 }
