@@ -82,4 +82,13 @@ public class GamesService {
         return gamesRepository.save(games);
     }
 
+    public Integer deleteGame(Integer gameId){
+        Optional<Games> optionalGames = gamesRepository.findById(gameId);
+        if(optionalGames.isPresent()){
+            gamesRepository.deleteById(gameId);
+            return 1;
+        }
+        return 0;
+    }
+
 }

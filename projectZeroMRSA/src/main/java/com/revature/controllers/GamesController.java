@@ -73,8 +73,7 @@ public class GamesController {
     }
 
     /*
-    Handler to assign user to a specific game given gameName
-    Receiving a 200; however, not updating user like it is supposed to be
+    Handler to assign user to a specific _NEW_ game given gameName
      */
     @PostMapping("users/{userid}/games")
     public ResponseEntity<Games> assignUser(@RequestBody Games games, @PathVariable Integer userid){
@@ -85,5 +84,18 @@ public class GamesController {
         }
         return ResponseEntity.status(200).body(updated);
     }
+
+    /*
+    Handler to delete game from the database.
+     */
+    @DeleteMapping("/games/{gameId}")
+    public ResponseEntity<Integer> deleteGame(@PathVariable Integer gameId){
+        int updated = gamesService.deleteGame(gameId);
+        if(updated == 1){
+            return ResponseEntity.status(200).body(gameId);
+        }
+        return ResponseEntity.status(200).body(null);
+    }
+
 
 }
