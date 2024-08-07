@@ -1,6 +1,10 @@
 package com.revature.services;
 import com.revature.models.Games;
+import com.revature.models.Users;
 import com.revature.repositories.GamesRepository;
+import com.revature.repositories.UserRepository;
+import com.revature.services.GamesService;
+import com.revature.services.UserService;
 import org.h2.engine.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -15,10 +19,12 @@ public class GamesService {
 
     @Autowired
     private GamesRepository gamesRepository;
+    private UserRepository userRepository;
 
     @Autowired
-    public GamesService(GamesRepository gamesRepository) {
+    public GamesService(GamesRepository gamesRepository, UserRepository userRepository) {
         this.gamesRepository = gamesRepository;
+        this.userRepository = userRepository;
     }
 
     //Retrieve all games in the repository
@@ -59,9 +65,21 @@ public class GamesService {
 
         return 1;
     }
-
     /*
         Would really like the updateGames() to take in an owner and return the entire updated game
         rather than the gameName; however, would take a decent amount of adjustments.
      */
+
+    /*
+    Method to assign a _NEW_ game an userid
+    Game can not already exist in the database
+     */
+    public Games assignUser(Games games, Integer userid){
+        Optional<Users> optionalUsers = userRepository.findUsersById(Long.valueOf(userid));
+        Users users = optionalUsers.get();
+        users.setId(userid);
+        games.setUsers(users);
+        return gamesRepository.save(games);
+    }
+
 }

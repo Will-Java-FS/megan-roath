@@ -75,17 +75,15 @@ public class GamesController {
     /*
     Handler to assign user to a specific game given gameName
     Receiving a 200; however, not updating user like it is supposed to be
-
-    @PostMapping("users/{userid}/games")
-    public ResponseEntity<Long> updateGames(@RequestBody Games games, @PathVariable Long userid){
-        Users us = userService.getUserById(userid);
-        games.setUsers(us);
-        Long updatedRows = (long)gamesService.updateGames(games);
-        if(updatedRows == 1){
-            return ResponseEntity.status(200).body(updatedRows);
-        }
-        return ResponseEntity.status(400).body(updatedRows);
-    }
      */
+    @PostMapping("users/{userid}/games")
+    public ResponseEntity<Games> assignUser(@RequestBody Games games, @PathVariable Integer userid){
+        Users us = userService.getUserById(Long.valueOf(userid));
+        Games updated = gamesService.assignUser(games, userid);
+        if(updated != null){
+            return ResponseEntity.status(400).body(updated);
+        }
+        return ResponseEntity.status(200).body(updated);
+    }
 
 }
